@@ -9,8 +9,9 @@ function createGridElement() {
   wrapper.style.padding = "10px";
   wrapper.style.marginTop = "10px";
 
-  const orderButton = document.getElementsByClassName("UhIuC")[0];
-  if (orderButton && normalizeText(orderButton.innerText) === "Orderonline") {
+  const button = document.getElementsByClassName("UhIuC")[0];
+  const buttontext = normalizeText(button.innerText);
+  if (button && (buttontext === "Orderonline" || buttontext === "Checkavailability")) { //if there's other buttons... idk maybe just look for A button?
     //console.warn("orderButton: ", orderButton, " with text content: ", normalizeText(orderButton.innerText));
     wrapper.style.marginBottom = "20px";
   }
@@ -115,7 +116,7 @@ function createGridElement() {
 
 
 
-
+/*
 function addUIElement() {
   const targetElement = document.getElementsByClassName("tLjsW");
   console.warn("why are you here");
@@ -138,32 +139,31 @@ function addUIElement() {
     target.insertAdjacentElement("afterend", arrow);
   }
 }
+*/
 
 
 // Also handle initial page load/refresh
 function waitForTargetAndAddUI() {
   const targetElement = document.getElementsByClassName("Pf6ghf"); // m6QErb Pf6ghf XiKgde ecceSd tLjsW
   let target = null;
-  if (targetElement.length === 2) {
-    target = targetElement[0];
-  } else if (targetElement.length === 3) {
-    target = targetElement[1];
-  } else {
-    setTimeout(waitForTargetAndAddUI, 100); // retry after 100ms. quicker than on first load since this menuing is faster.
-    return;
+  for (let element of targetElement) {
+    if (element.getAttribute("role") === "region") {
+      target = element;
+      break;
+    }
   }
-  console.warn(targetElement.length, " elements found");
+  //console.warn(targetElement.length, " elements found");
   const arrow = document.getElementById("Arrow");
 
   if (target && !arrow) {  // empty target found, fire the arrow
-    console.log("Target element found, injecting UI...");
+    //console.warn("Target element found, injecting UI...");
     const arrow = document.createElement("div");
     arrow.id = "Arrow";
     arrow.appendChild(createGridElement());
     target.insertAdjacentElement("afterend", arrow);
     return;
   } else if (!arrow) {  // target hasn't loaded yet, keep the arrow nocked
-    console.warn("didn't find a target...");
+    //console.warn("didn't find a target...");
     setTimeout(waitForTargetAndAddUI, 250); // retry after 250ms
     return;
   } else {  // target already hit
