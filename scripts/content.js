@@ -11,9 +11,9 @@ function createGridElement() {
 
   const button = document.getElementsByClassName("UhIuC")[0];
   const buttontext = normalizeText(button.innerText);
-  if (button && (buttontext === "Orderonline" || buttontext === "Checkavailability")) { //if there's other buttons... idk maybe just look for A button?
-    //console.warn("orderButton: ", orderButton, " with text content: ", normalizeText(orderButton.innerText));
-    wrapper.style.marginBottom = "20px";
+  if (button && (buttontext != "Aboutthisdata")) { //if there's other buttons... idk maybe just look for A button?
+    //console.warn("Button: ", button, " with text content: ", buttontext);
+    wrapper.style.marginBottom = "40px";
   }
 
 
