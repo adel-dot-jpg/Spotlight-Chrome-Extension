@@ -1,11 +1,11 @@
 {
-  "name": "Reading Time",
-  "description": "Current page reading timer",
+  "name": "Spotlight",
+  "description": "See what the community is saying about places near you with just a click. The modern way to explore your city.",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "app.html",
-    "default_icon": "hello_extensions.png"
+    "default_icon": "Spotlight_main_icon-128.png"
   },
   "icons": {
     "16": "images/icon-16.png",
