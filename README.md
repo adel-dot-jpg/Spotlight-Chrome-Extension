@@ -6,4 +6,4 @@ This is a Chrome extension that allows you to quickly explore any location on Go
 ## UI
 ---
 
-![App UI](https://imgur.com/a/n7ttayT)
+![App UI](https://i.imgur.com/SWsNc2y.png)
